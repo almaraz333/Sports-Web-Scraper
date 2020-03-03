@@ -10,7 +10,7 @@ import csv
 
 
 
-file = 'Minor league hockey no EAMs.csv'
+file = 'Minor league hockey no EAMs.csv' #edit this file name with your own
 hascase=[]
 
 
