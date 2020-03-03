@@ -4,7 +4,7 @@ import pandas as pd
 import csv
 
 
-website_url = requests.get("https://www.basketball-reference.com/teams/LAL/").text
+website_url = requests.get("https://www.basketball-reference.com/teams/LAL/").text #Edit this URL
 soup = BeautifulSoup(website_url,'lxml')
 div = soup.find("div", {"id": "div_LAL"})
 bad_char=['*']
@@ -65,7 +65,7 @@ for link in links:
     for item in pre_final_list:
         if item not in final_list:
             final_list.append(item)
-    with open('LAKERS_players.csv', 'w',encoding='utf-8', newline='') as file:
+    with open('LAKERS_players.csv', 'w',encoding='utf-8', newline='') as file: #Change the name of this csv file to whatever you like
         writer = csv.writer(file)
         for item in final_list:
             writer.writerow(item)
