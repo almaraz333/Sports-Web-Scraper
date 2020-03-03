@@ -8,7 +8,7 @@ new_names=[]
 links=[]
 names=[]
 dob_list=[]
-website_url = requests.get("https://en.wikipedia.org/wiki/All-time_Chivas_USA_roster").text
+website_url = requests.get("https://en.wikipedia.org/wiki/All-time_Chivas_USA_roster").text #Edit this URL 
 soup = BeautifulSoup(website_url,'lxml')
 ul = soup.findAll("ul")
 for li in ul:
@@ -57,7 +57,7 @@ d = dict(zip(new_names,dob_list))
 print(d.keys())
 
 
-with open("CHIVAS.csv","w+",newline="") as file:
+with open("CHIVAS.csv","w+",newline="") as file:#Edit this csv file it whatever you want to name it
   writer = csv.writer(file)
   for key,value in d.items():
     writer.writerow([key,value])
