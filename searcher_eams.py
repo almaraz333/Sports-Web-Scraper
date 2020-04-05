@@ -10,7 +10,7 @@ import csv
 
 
 
-file = 'Minor league hockey no EAMs.csv' #edit this file name with your own
+file = 'FILE.csv'
 hascase=[]
 
 
@@ -42,7 +42,7 @@ with open(file,'r') as csvfile:
     try:
         for row in reader:
             try:
-                name = row[0].split()
+                name = row[2].split()#Split Row of Full Name
                 first = name[0][0]
                 last = name[1:]
                 browser.find_element_by_id("firstname").send_keys(Keys.CONTROL + "a")
@@ -53,29 +53,20 @@ with open(file,'r') as csvfile:
                 browser.find_element_by_id("dob").send_keys(Keys.DELETE)
                 browser.find_element_by_id('firstname').send_keys(first)
                 browser.find_element_by_id('lastname').send_keys(last)
-                browser.find_element_by_id('dob').send_keys(row[9][:6]+"19"+row[9][6:])
+                browser.find_element_by_id('dob').send_keys(row[4][:6]+"19"+row[4][6:]) #Row of DOB
                 browser.find_element_by_xpath("/html/body/div[1]/div/div[3]/div/form/p/input[3]").click()
                 try:
                     browser.find_element_by_xpath("/html/body/div[1]/div/div[3]/div/table")
-                    hascase.append(row[0])
+                    print("YES")
                 except:
-                    pass
+                    print("NO")
             except:
-                print(row[0]+" 2")
+                print(row[3]+" 2")
     except:
-        print(row[0]+" 3")
+        print(row[3]+" 3")
             
 
-with open(file,'r') as csvfile:
-    reader = csv.reader(csvfile, delimiter=',')
-    for row in reader:
-        if row[0] in hascase:
-            print("YES")
-        if row[0] not in hascase:
-            print("NO")
 
-
-                
-
+            
 browser.quit()
 
